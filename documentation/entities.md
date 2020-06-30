@@ -5,11 +5,11 @@
 | Key              | Datatypes | Required | Notes                                              |
 | ---------------- | --------- | -------- | -------------------------------------------------- |
 | id               | pk        | yes      | Already added by model:generate                    |
-| username         | string    | yes      | unique: true                                       |
+| username         | string    | yes      | unique: true, default 'user {User.id.length + 1}'  |
 | email            | string    | yes      |                                                    |
-| password         | string    | yes      |                                                    |
-| frontName        | string    | yes      |                                                    |
-| lastName         | string    | yes      |                                                    |
+| password         | string    | yes      | default 'password'                                 |
+| frontName        | string    | yes      | default 'frontName'                                |
+| lastName         | string    | yes      | default 'lastName'                                 |
 | phoneNumber      | string    | yes      | validation in frontend form for pattern            |
 | admin            | boolean   | no       | default false                                      |
 | totaalToto       | boolean   | no       | default true                                       |
