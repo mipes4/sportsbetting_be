@@ -1,15 +1,15 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class prediction extends Model {
+  class predictions extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      prediction.belongsTo(models.user);
-      prediction.belongsTo(models.score);
+      predictions.belongsTo(models.user);
+      predictions.belongsTo(models.score);
     }
   }
   prediction.init(
@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "prediction",
+      modelName: "predictions",
     }
   );
-  return prediction;
+  return predictions;
 };
