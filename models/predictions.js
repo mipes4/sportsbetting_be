@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       prediction.belongsTo(models.user);
+      prediction.belongsTo(models.score);
     }
   }
   predictions.init(
