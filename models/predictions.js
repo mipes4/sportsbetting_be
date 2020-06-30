@@ -14,8 +14,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   predictions.init(
     {
-      predGoalsHomeTeam: DataTypes.INTEGER,
-      predGoalsAwayTeam: DataTypes.INTEGER,
+      predGoalsHomeTeam: { type: DataTypes.INTEGER, allowNull: false },
+      predGoalsAwayTeam: { type: DataTypes.INTEGER, allowNull: false },
+      fixtureId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,
