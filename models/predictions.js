@@ -12,11 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       predictions.belongsTo(models.score);
     }
   }
-  prediction.init(
+  predictions.init(
     {
       predGoalsHomeTeam: DataTypes.INTEGER,
       predGoalsAwayTeam: DataTypes.INTEGER,
-      fixtureId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,
