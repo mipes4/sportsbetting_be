@@ -12,7 +12,6 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId,
         },
         {
           predGoalsHomeTeam: 2,
