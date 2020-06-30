@@ -17,7 +17,9 @@
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.4",
     "pg": "^8.2.1",
-    "sequelize": "^6.2.3",
+    "sequelize": "^6.2.3"
+  },
+  "devDependencies": {
     "sequelize-cli": "^6.1.0"
   }
 }
