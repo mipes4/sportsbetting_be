@@ -21,7 +21,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId: 1,
+          fixtureId: 2,
         },
         {
           predGoalsHomeTeam: 3,
@@ -30,7 +30,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId: 1,
+          fixtureId: 3,
         },
         {
           predGoalsHomeTeam: 1,
@@ -39,7 +39,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId: 1,
+          fixtureId: 4,
         },
         {
           predGoalsHomeTeam: 1,
@@ -48,7 +48,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId: 1,
+          fixtureId: 5,
         },
         {
           predGoalsHomeTeam: 1,
@@ -57,7 +57,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId: 1,
+          fixtureId: 6,
         },
         {
           predGoalsHomeTeam: 2,
@@ -66,7 +66,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId: 1,
+          fixtureId: 7,
         },
         {
           predGoalsHomeTeam: 0,
@@ -75,7 +75,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId: 1,
+          fixtureId: 8,
         },
         {
           predGoalsHomeTeam: 0,
@@ -84,7 +84,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 1,
           scoreId: 1,
-          fixtureId: 1,
+          fixtureId: 9,
         },
         {
           predGoalsHomeTeam: 3,
@@ -93,7 +93,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 2,
           scoreId: 1,
-          fixtureId: 2,
+          fixtureId: 1,
         },
         {
           predGoalsHomeTeam: 1,
@@ -111,7 +111,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 2,
           scoreId: 1,
-          fixtureId: 2,
+          fixtureId: 3,
         },
         {
           predGoalsHomeTeam: 2,
@@ -120,7 +120,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 2,
           scoreId: 1,
-          fixtureId: 2,
+          fixtureId: 4,
         },
         {
           predGoalsHomeTeam: 1,
@@ -129,7 +129,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 2,
           scoreId: 1,
-          fixtureId: 2,
+          fixtureId: 5,
         },
         {
           predGoalsHomeTeam: 1,
@@ -138,7 +138,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 2,
           scoreId: 1,
-          fixtureId: 2,
+          fixtureId: 6,
         },
         {
           predGoalsHomeTeam: 3,
@@ -147,7 +147,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 2,
           scoreId: 1,
-          fixtureId: 2,
+          fixtureId: 7,
         },
         {
           predGoalsHomeTeam: 1,
@@ -156,7 +156,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 2,
           scoreId: 1,
-          fixtureId: 2,
+          fixtureId: 8,
         },
         {
           predGoalsHomeTeam: 2,
@@ -165,7 +165,7 @@ module.exports = {
           updatedAt: new Date(),
           userId: 2,
           scoreId: 1,
-          fixtureId: 2,
+          fixtureId: 9,
         },
       ],
       {}
