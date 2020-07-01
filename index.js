@@ -1,10 +1,16 @@
 require("dotenv").config();
+const { Router } = require("express");
+const Axios = require("axios");
+const apiUrl = require("./config/constants").apiUrl;
+const apiUrlDemo = require("./config/constants").apiUrlDemo;
+const apiKey = require("./config/constants").apiKey;
 const express = require("express");
 const corsMiddleWare = require("cors");
 const { PORT } = require("./config/constants");
 const predictionRouter = require("./routers/predictions");
 
 const app = express();
+const router = new Router();
 
 /**
  *
@@ -58,6 +64,25 @@ if (process.env.DELAY) {
   });
 }
 
+/**
+ *
+ * When going into live mode, change apiUrlDemo into apiUrl and uncomment headers
+ *
+ */
+
+app.get("/matches", async (req, res, next) => {
+  const league_id = 566;
+  const response = await Axios.get(
+    `${apiUrlDemo}/fixtures/league/${league_id}`
+    /**, {
+    * headers: {
+    *   "X-RapidAPI-Key": apiKey,
+    * },
+  }*/
+  );
+  res.send(response.data);
+});
+
 app.use(corsMiddleWare());
 
 app.use("/predictions", predictionRouter);
@@ -65,3 +90,5 @@ app.use("/predictions", predictionRouter);
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
+
+module.exports = router;
