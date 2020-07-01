@@ -8,6 +8,7 @@ const express = require("express");
 const corsMiddleWare = require("cors");
 const { PORT } = require("./config/constants");
 const predictionRouter = require("./routers/predictions");
+const Match = require("./models").match;
 
 const app = express();
 const router = new Router();
@@ -81,9 +82,31 @@ app.get("/matches", async (req, res, next) => {
   }*/
   );
 
-  console.log("What is my data?", response.data);
+  // Match.bulkCreate();
 
-  res.send(response.data);
+  const allFixtures = response.data.api;
+  // console.log("What is all fixture data?", allFixtures);
+
+  const fixture = allFixtures.fixtures.map((fixture) => {
+    return Match.bulkCreate([
+      {
+        id: fixture.fixture_id,
+        homeTeamId: fixture.homeTeam.team_id,
+        homeTeamName: fixture.homeTeam.team_name,
+        homeTeamLogo: fixture.homeTeam.logo,
+        goalsHomeTeam: fixture.goalsHomeTeam,
+        awayTeamId: fixture.awayTeam.team_id,
+        awayTeamName: fixture.awayTeam.team_name,
+        awayTeamLogo: fixture.awayTeam.logo,
+        goalsAwayTeam: fixture.goalsAwayTeam,
+        eventTimeStamp: fixture.event_timestamp,
+        round: fixture.round,
+        status: fixture.statusShort,
+      },
+    ]);
+  });
+  res.send(fixture);
+  // console.log("What is fixture?", fixture);
 });
 
 app.use(corsMiddleWare());
