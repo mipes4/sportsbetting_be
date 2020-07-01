@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       predictions.belongsTo(models.user);
       predictions.belongsTo(models.score);
+      // predictions.belongsTo(models.match);
     }
   }
   predictions.init(

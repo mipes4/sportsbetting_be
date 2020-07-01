@@ -24,22 +24,43 @@
 
 ### Prediction
 
-| Key               | Datatypes | Required | Notes                                                                             |
-| ----------------- | --------- | -------- | --------------------------------------------------------------------------------- |
-| id                | pk        | yes      | Already added by model:generate                                                   |
-| predGoalsHomeTeam | integer   | yes      |                                                                                   |
-| predGoalsAwayTeam | integer   | yes      |                                                                                   |
-| createdAt         | date      | yes      | Already added by model:generate                                                   |
-| updatedAt         | date      | yes      | Already added by model:generate                                                   |
-| fixtureId         | integer   | yes      | Foreign key (references API GET team/{team}/{league_id}?timeone=Europe/Amsterdam) |
-| userId            | integer   | yes      | Foreign key (references user)                                                     |
-| scoreId           | integer   | yes      | Foreign key (references score)                                                    |
+| Key               | Datatypes | Required | Notes                            |
+| ----------------- | --------- | -------- | -------------------------------- |
+| id                | pk        | yes      | Already added by model:generate  |
+| predGoalsHomeTeam | integer   | yes      |                                  |
+| predGoalsAwayTeam | integer   | yes      |                                  |
+| createdAt         | date      | yes      | Already added by model:generate  |
+| updatedAt         | date      | yes      | Already added by model:generate  |
+| fixtureId         | integer   | yes      | Foreign key (references matches) |
+| userId            | integer   | yes      | Foreign key (references user)    |
+| scoreId           | integer   | yes      | Foreign key (references score)   |
 
 ##### Relations:
 
-- a prediction (fixtureId) belongs to API GET team/{team}/{league_id}?timeone=Europe/Amsterdam
+- a prediction (matchId) belongs matches
 - a prediction (userId) belongs to user
 - a prediction (scoreId) belongs to score
+
+### Matches
+
+| Key            | Datatypes | Required | Notes                             |
+| -------------- | --------- | -------- | --------------------------------- |
+| id             | pk        | yes      | Can this be filled by fixture_Id? |
+| homeTeamId     | integer   | yes      |                                   |
+| homeTeamName   | string    | yes      |                                   |
+| homeTeamLogo   | string    | no       |                                   |
+| goalsHomeTeam  | integer   | no       |                                   |
+| awayTeamId     | integer   | yes      |                                   |
+| awayTeamName   | string    | yes      |                                   |
+| awayTeamLogo   | string    | no       |                                   |
+| goalsAwayTeam  | integer   | no       |                                   |
+| eventTimeStamp | integer   | no       |                                   |
+| round          | string    | no       |                                   |
+| status         | string    | no       |                                   |
+
+##### Relations:
+
+- a match has many predictions
 
 ### Score
 
