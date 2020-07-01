@@ -80,6 +80,9 @@ app.get("/matches", async (req, res, next) => {
     * },
   }*/
   );
+
+  console.log("What is my data?", response.data);
+
   res.send(response.data);
 });
 
