@@ -5,6 +5,15 @@ const sequelize = require("sequelize");
 
 const router = new Router();
 
+router.get("/", async (req, res, next) => {
+  try {
+    const predictions = await Prediction.findAll();
+    res.send([predictions]);
+  } catch (e) {
+    next(e);
+  }
+});
+
 console.log(apiUrl);
 // Create prediction
 router.post("/", async (req, res, next) => {
