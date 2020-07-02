@@ -72,24 +72,22 @@ if (process.env.DELAY) {
  */
 
 app.get("/matches", async (req, res, next) => {
-  const league_id = 566;
-  const response = await Axios.get(
-    `${apiUrlDemo}/fixtures/league/${league_id}`
-    /**, {
+  try {
+    const league_id = 566;
+    const response = await Axios.get(
+      `${apiUrlDemo}/fixtures/league/${league_id}`
+      /**, {
     * headers: {
     *   "X-RapidAPI-Key": apiKey,
     * },
   }*/
-  );
+    );
 
-  // Match.bulkCreate();
+    const allFixtures = response.data.api;
+    // console.log("What is all fixture data?", allFixtures);
 
-  const allFixtures = response.data.api;
-  // console.log("What is all fixture data?", allFixtures);
-
-  const fixture = allFixtures.fixtures.map((fixture) => {
-    return Match.bulkCreate([
-      {
+    const fixtures = allFixtures.fixtures.map((fixture) => {
+      return {
         id: fixture.fixture_id,
         homeTeamId: fixture.homeTeam.team_id,
         homeTeamName: fixture.homeTeam.team_name,
@@ -102,11 +100,20 @@ app.get("/matches", async (req, res, next) => {
         eventTimeStamp: fixture.event_timestamp,
         round: fixture.round,
         status: fixture.statusShort,
-      },
-    ]);
-  });
-  res.send(fixture);
-  // console.log("What is fixture?", fixture);
+      };
+    });
+    console.log(fixtures);
+
+    const savedFixtures = await Match.bulkCreate(fixtures, {
+      updateOnDuplicate: ["id"],
+    });
+
+    // await Promise.all(fixture);
+    res.send(savedFixtures);
+    // console.log("What is fixture?", fixture);
+  } catch (e) {
+    next(e);
+  }
 });
 
 app.use(corsMiddleWare());
