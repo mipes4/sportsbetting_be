@@ -8,7 +8,7 @@ const router = new Router();
 router.get("/", async (req, res, next) => {
   try {
     const predictions = await Prediction.findAll();
-    res.send([predictions]);
+    res.send(predictions);
   } catch (e) {
     next(e);
   }
