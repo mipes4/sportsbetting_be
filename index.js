@@ -1,15 +1,10 @@
 require("dotenv").config();
 const { Router } = require("express");
-const Axios = require("axios");
-const apiUrl = require("./config/constants").apiUrl;
-const apiUrlDemo = require("./config/constants").apiUrlDemo;
-const apiKey = require("./config/constants").apiKey;
 const express = require("express");
 const corsMiddleWare = require("cors");
 const { PORT } = require("./config/constants");
 const predictionRouter = require("./routers/predictions");
-const Match = require("./models").match;
-const Prediction = require("./models").predictions;
+const matchesRouter = require("./routers/matches");
 const matches = require("./API_requests/matches");
 
 const app = express();
@@ -75,14 +70,10 @@ if (process.env.DELAY) {
  *
  */
 
-app.get("/matches", async (req, res, next) => {
-  const myMatches = await Match.findAll({ include: Prediction });
-  res.send(myMatches);
-});
-
 app.use(corsMiddleWare());
 
 app.use("/predictions", predictionRouter);
+app.use("/matches", matchesRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);

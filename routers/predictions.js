@@ -1,20 +1,25 @@
 const { Router } = require("express");
 const Prediction = require("../models").predictions;
-const apiUrl = require("../config/constants").apiUrl;
 const sequelize = require("sequelize");
+const Match = require("../models").match;
 
 const router = new Router();
 
-router.get("/", async (req, res, next) => {
-  try {
-    const predictions = await Prediction.findAll();
-    res.send(predictions);
-  } catch (e) {
-    next(e);
-  }
-});
+// Half written query, not sure if I'm gonna use it
+// router.get("/", async (req, res, next) => {
+//   const userId = req.body;
 
-console.log(apiUrl);
+//   try {
+//     const predictions = await Prediction.findAll({
+//       where: userId,
+//       include: { model: Match, where: { id: Prediction.matchId } },
+//     });
+//     res.send(predictions);
+//   } catch (e) {
+//     next(e);
+//   }
+// });
+
 // Create prediction
 router.post("/", async (req, res, next) => {
   const {

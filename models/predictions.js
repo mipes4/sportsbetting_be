@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       predGoalsHomeTeam: { type: DataTypes.INTEGER, allowNull: false },
       predGoalsAwayTeam: { type: DataTypes.INTEGER, allowNull: false },
-      fixtureId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,

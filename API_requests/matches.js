@@ -1,6 +1,8 @@
 const Axios = require("axios");
 const apiUrlDemo = require("../config/constants").apiUrlDemo;
 const Match = require("../models").match;
+const apiKey = require("../config/constants").apiKey;
+const apiUrl = require("../config/constants").apiUrl;
 
 const league_id = 566;
 const getMatches = async () => {
