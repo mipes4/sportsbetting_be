@@ -5,21 +5,6 @@ const Match = require("../models").match;
 
 const router = new Router();
 
-// Half written query, not sure if I'm gonna use it
-// router.get("/", async (req, res, next) => {
-//   const userId = req.body;
-
-//   try {
-//     const predictions = await Prediction.findAll({
-//       where: userId,
-//       include: { model: Match, where: { id: Prediction.matchId } },
-//     });
-//     res.send(predictions);
-//   } catch (e) {
-//     next(e);
-//   }
-// });
-
 // Create prediction
 router.post("/", async (req, res, next) => {
   const {
@@ -27,7 +12,7 @@ router.post("/", async (req, res, next) => {
     predGoalsAwayTeam,
     userId,
     scoreId,
-    fixtureId,
+    matchId,
   } = req.body;
 
   //   console.log(req.body);
@@ -37,7 +22,7 @@ router.post("/", async (req, res, next) => {
     !predGoalsAwayTeam ||
     !userId ||
     !scoreId ||
-    !fixtureId
+    !matchId
   ) {
     return res.status(400).send("Please provide everything");
   }
@@ -48,7 +33,7 @@ router.post("/", async (req, res, next) => {
       predGoalsAwayTeam,
       userId,
       scoreId,
-      fixtureId,
+      matchId,
     });
     // console.log(newPrediction);
 

@@ -4,6 +4,7 @@ const express = require("express");
 const corsMiddleWare = require("cors");
 const { PORT } = require("./config/constants");
 const predictionRouter = require("./routers/predictions");
+const scoresRouter = require("./routers/scores");
 const matchesRouter = require("./routers/matches");
 const matches = require("./API_requests/matches");
 
@@ -74,6 +75,7 @@ app.use(corsMiddleWare());
 
 app.use("/predictions", predictionRouter);
 app.use("/matches", matchesRouter);
+app.use("/scores", scoresRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);

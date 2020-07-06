@@ -6,12 +6,16 @@ const User = require("../models").user;
 const router = new Router();
 
 // GET all matches with predictions
-router.get("/:userId", async (req, res, next) => {
+router.get("/user/:userId", async (req, res, next) => {
   const { userId } = req.params;
   console.log("What are my params?", userId);
   try {
     const myMatches = await Match.findAll({
-      include: { model: Prediction, where: { userId: userId } },
+      include: {
+        model: Prediction,
+        where: { userId: userId },
+        required: false,
+      },
     });
     res.send(myMatches);
   } catch (e) {
