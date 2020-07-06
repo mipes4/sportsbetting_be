@@ -2,6 +2,7 @@ const { Router } = require("express");
 const Match = require("../models").match;
 const Prediction = require("../models").predictions;
 const User = require("../models").user;
+const Score = require("../models").score;
 
 const router = new Router();
 
@@ -15,6 +16,7 @@ router.get("/user/:userId", async (req, res, next) => {
         model: Prediction,
         where: { userId: userId },
         required: false,
+        include: [{ model: Score }],
       },
     });
     res.send(myMatches);
