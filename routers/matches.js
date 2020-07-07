@@ -25,7 +25,7 @@ router.get("/user/:userId", async (req, res, next) => {
   }
 });
 
-// GET one match with all predictions with the perticular user
+// GET one match with all predictions with the particular user
 router.get("/match/:matchId", async (req, res, next) => {
   const { matchId } = req.params;
   try {

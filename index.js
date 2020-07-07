@@ -2,10 +2,12 @@ require("dotenv").config();
 const { Router } = require("express");
 const express = require("express");
 const corsMiddleWare = require("cors");
+const authMiddleWare = require("./auth/middleware");
 const { PORT } = require("./config/constants");
 const predictionRouter = require("./routers/predictions");
 const scoresRouter = require("./routers/scores");
 const matchesRouter = require("./routers/matches");
+const authRouter = require("./routers/auth");
 const matches = require("./API_requests/matches");
 
 const app = express();
@@ -67,6 +69,32 @@ if (process.env.DELAY) {
 
 /**
  *
+ * authMiddleware:
+ *
+ * When a token is provided:
+ * decrypts a jsonwebtoken to find a userId
+ * queries the database to find the user with that add id
+ * adds it to the request object
+ * user can be accessed as req.user when handling a request
+ * req.user is a sequelize User model instance
+ *
+ * When no or an invalid token is provided:
+ * returns a 4xx reponse with an error message
+ *
+ * check: auth/middleware.js
+ *
+ * For fine grained control, import this middleware in your routers
+ * and use it for specific routes
+ *
+ * for a demo check the following endpoints
+ *
+ * POST /authorized_post_request
+ * GET /me
+ *
+ */
+
+/**
+ *
  * When going into live mode, change apiUrlDemo into apiUrl and uncomment headers
  *
  */
@@ -76,6 +104,7 @@ app.use(corsMiddleWare());
 app.use("/predictions", predictionRouter);
 app.use("/matches", matchesRouter);
 app.use("/scores", scoresRouter);
+app.use("/", authRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
