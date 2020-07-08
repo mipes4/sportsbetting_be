@@ -6,6 +6,6 @@ API_KEY=YOUR_API_KEY_HERE
 
 When seeding files:
 migrate:undo:all
-migrate:all
+migrate
 let api run by running index.js
 seed:all

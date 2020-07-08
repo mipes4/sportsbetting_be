@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   round.init(
     {
-      roundNr: DataTypes.STRING,
+      roundNr: { type: DataTypes.STRING, unique: true },
     },
     {
       sequelize,

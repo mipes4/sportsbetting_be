@@ -10,6 +10,7 @@ module.exports = {
       },
       roundNr: {
         type: Sequelize.STRING,
+        unique: true,
       },
       createdAt: {
         allowNull: false,
