@@ -8,12 +8,15 @@ const predictionRouter = require("./routers/predictions");
 const scoresRouter = require("./routers/scores");
 const matchesRouter = require("./routers/matches");
 const authRouter = require("./routers/auth");
+const roundRouter = require("./routers/rounds");
 const matches = require("./API_requests/matches");
+const rounds = require("./API_requests/rounds");
 
 const app = express();
 const router = new Router();
 
 matches.getMatches();
+rounds.getRounds();
 
 /**
  *
@@ -105,6 +108,7 @@ app.use("/predictions", predictionRouter);
 app.use("/matches", matchesRouter);
 app.use("/scores", scoresRouter);
 app.use("/", authRouter);
+app.use("/rounds", roundRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
