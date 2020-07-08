@@ -65,6 +65,42 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+//PATCH change user
+router.patch("/change_me/:userId", async (req, res, next) => {
+  const { userId } = req.params;
+  console.log("What is my userId?", userId);
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .send({ message: "Please provide both email and password" });
+    }
+
+    const userToUpdate = await User.findByPk(userId);
+
+    if (!userToUpdate || !bcrypt.compareSync(password, userToUpdate.password)) {
+      return res.status(400).send({
+        message: "User with that email not found or passsword incorrect",
+      });
+    }
+
+    if (!userToUpdate) {
+      res.status(404).send("User not found");
+    } else {
+      const updatedUser = await userToUpdate.update(req.body);
+    }
+
+    delete userToUpdate.dataValues["password"];
+    const token = toJWT({ userId: userToUpdate.id });
+    return res.status(200).send({ token, ...userToUpdate.dataValues });
+  } catch (error) {
+    console.log(Error);
+    return res.status(400).send({ message: "Something went wrong, sorry" });
+  }
+});
+
 //GET users profile using only token & check if a token is still valid
 router.get("/me", authMiddleware, async (req, res) => {
   delete req.user.dataValues["password"];
