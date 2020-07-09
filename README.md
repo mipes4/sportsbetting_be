@@ -13,6 +13,9 @@ In config/constants and config/config there are listed a few process.env variabl
 
 ### Available Scripts
 
+**IMPORTANT** :bangbang:
+_After_ migrating and _before_ seeding it's important that index.js file has run at least one time. Just make a little edit and save it and it runs.
+
 In the project directory, you can run:
 
 #### `npm run dev`
@@ -30,6 +33,3 @@ Migrates the Postgres database using Sequelize-Cli.
 #### `npm run seed`
 
 The repository has some seeding files to set up a development envirement. This will seed the Postgres database.
-
-**IMPORTANT**
-_After_ migrating and _before_ seeding it's important that index.js file has run one time. Just make a little edit and save it and it runs.
