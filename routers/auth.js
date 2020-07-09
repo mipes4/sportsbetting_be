@@ -70,26 +70,27 @@ router.patch("/change_me/:userId", async (req, res, next) => {
   const { userId } = req.params;
   console.log("What is my userId?", userId);
   try {
-    const { email, password } = req.body;
+    // const { password } = req.body;
 
-    if (!email || !password) {
-      return res
-        .status(400)
-        .send({ message: "Please provide both email and password" });
-    }
+    // if (!password) {
+    //   return res
+    //     .status(400)
+    //     .send({ message: "Please provide a valid password" });
+    // }
 
     const userToUpdate = await User.findByPk(userId);
 
-    if (!userToUpdate || !bcrypt.compareSync(password, userToUpdate.password)) {
-      return res.status(400).send({
-        message: "User with that email not found or passsword incorrect",
-      });
-    }
+    // if (!userToUpdate || !bcrypt.compareSync(password, userToUpdate.password)) {
+    //   return res.status(400).send({
+    //     message: "User with that email not found or passsword incorrect",
+    //   });
+    // }
 
     if (!userToUpdate) {
       res.status(404).send("User not found");
     } else {
       const updatedUser = await userToUpdate.update(req.body);
+      res.json(updatedUser);
     }
 
     delete userToUpdate.dataValues["password"];
