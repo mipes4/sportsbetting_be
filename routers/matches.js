@@ -8,7 +8,7 @@ const Sequelize = require("sequelize");
 
 const router = new Router();
 
-// GET all matches with predictions
+// GET all matches with predictions for one round
 router.get("/user/:userId/round/:roundNr", async (req, res, next) => {
   const { userId, roundNr } = req.params;
   console.log("What are my params?", userId);
@@ -21,6 +21,24 @@ router.get("/user/:userId/round/:roundNr", async (req, res, next) => {
       },
       where: {
         round: { [Op.like]: `Regular Season - ${roundNr}` },
+      },
+    });
+    res.send(myMatches);
+  } catch (e) {
+    next(e);
+  }
+});
+
+// GET all matches with predictions
+router.get("/user/:userId", async (req, res, next) => {
+  const { userId } = req.params;
+  console.log("What are my params?", userId);
+  try {
+    const myMatches = await Match.findAll({
+      include: {
+        model: Prediction,
+        where: { userId: userId },
+        required: false,
       },
     });
     res.send(myMatches);
