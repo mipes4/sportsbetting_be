@@ -43,16 +43,13 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.patch("/:userId/:fixtureId", async (req, res, next) => {
+// Update prediction
+router.patch("/prediction/:predictionId", async (req, res, next) => {
+  const { predictionId } = req.params;
+  console.log("What is my predictionId?", predictionId);
   try {
-    const fixtureId = parseInt(req.params.fixtureId);
-    const userId = parseInt(req.params.userId);
-    console.log("What is my fixtureId?", parseInt(fixtureId));
-    console.log("What is my userId?", userId);
-    const predictionToUpdate = await Prediction.findOne({
-      where: sequelize.and({ fixtureId, userId }),
-    });
-    //Fetch match info from API await axios.get matchUrl/fixtureId
+    const predictionToUpdate = await Prediction.findByPk(predictionId);
+    //Fetch prediction info from API await axios.get predictionId
     if (!predictionToUpdate) {
       res.status(404).send("Prediction not found");
     } else {
