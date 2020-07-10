@@ -8,7 +8,7 @@ const { SALT_ROUNDS } = require("../config/constants");
 const router = new Router();
 
 //POST create log in
-router.post("/login", async (req, res, next) => {
+router.post("login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
@@ -36,7 +36,7 @@ router.post("/login", async (req, res, next) => {
 });
 
 //POST create user
-router.post("/signup", async (req, res) => {
+router.post("signup", async (req, res) => {
   const { email, password, name } = req.body;
   if (!email || !password || !name) {
     return res.status(400).send("Please provide an email, password and a name");
@@ -66,7 +66,7 @@ router.post("/signup", async (req, res) => {
 });
 
 //PATCH change user
-router.patch("/change_me/:userId", async (req, res, next) => {
+router.patch("change_me/:userId", async (req, res, next) => {
   const { userId } = req.params;
   console.log("What is my userId?", userId);
   try {
@@ -103,7 +103,7 @@ router.patch("/change_me/:userId", async (req, res, next) => {
 });
 
 //GET users profile using only token & check if a token is still valid
-router.get("/me", authMiddleware, async (req, res) => {
+router.get("me", authMiddleware, async (req, res) => {
   delete req.user.dataValues["password"];
   res.status(200).send({ ...req.user.dataValues });
 });
