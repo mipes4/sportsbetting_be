@@ -7,13 +7,13 @@ const apiUrl = require("../config/constants").apiUrl;
 const league_id = 566;
 const getMatches = async () => {
   const response = await Axios.get(
-    `${apiUrlDemo}/fixtures/league/${league_id}`
+    `${apiUrl}/fixtures/league/${league_id}`,
 
-    /**, {
-      * headers: {
-      *   "X-RapidAPI-Key": apiKey,
-      * },
-    }*/
+    {
+      headers: {
+        "X-RapidAPI-Key": apiKey,
+      },
+    }
   );
 
   const allFixtures = response.data.api;
