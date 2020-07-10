@@ -20,20 +20,6 @@ rounds.getRounds();
 
 /**
  *
- * express.json():
- * be able to read request bodies of JSON requests
- * a.k.a. body-parser
- * Needed to be able to POST / PUT / PATCH
- *
- * docs: https://expressjs.com/en/api.html#express.json
- *
- */
-
-const bodyParserMiddleWare = express.json();
-app.use(bodyParserMiddleWare);
-
-/**
- *
  * cors middleware:
  *
  * Since our api is hosted on a different domain than our client
@@ -49,6 +35,20 @@ app.use(bodyParserMiddleWare);
  */
 
 app.use(corsMiddleWare());
+
+/**
+ *
+ * express.json():
+ * be able to read request bodies of JSON requests
+ * a.k.a. body-parser
+ * Needed to be able to POST / PUT / PATCH
+ *
+ * docs: https://expressjs.com/en/api.html#express.json
+ *
+ */
+
+const bodyParserMiddleWare = express.json();
+app.use(bodyParserMiddleWare);
 
 /**
  *
