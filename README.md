@@ -13,8 +13,8 @@ In config/constants and config/config there are listed a few process.env variabl
 
 ### Available Scripts
 
-**IMPORTANT** :bangbang:
-_After_ migrating and _before_ seeding it's important that index.js file has run at least one time. Just make a little edit and save it and it runs.
+:grey_exclamation: **NOTE** :grey_exclamation:
+The backend can fill the database with seeding files for demo and development purposes but also fills table Matches and Rounds with data fetched from an external API.
 
 In the project directory, you can run:
 
@@ -26,10 +26,6 @@ Open http://localhost:4000 to view it in the browser.
 The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-#### `npm run migrate`
+#### `npm run initdev`
 
-Migrates the Postgres database using Sequelize-Cli.
-
-#### `npm run seed`
-
-The repository has some seeding files to set up a development envirement. This will seed the Postgres database.
+Migrates the Postgres database using Sequelize-Cli and seed the database with soms seeding files made for demo and development purposes.
