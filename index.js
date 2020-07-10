@@ -15,8 +15,8 @@ const rounds = require("./API_requests/rounds");
 const app = express();
 const router = new Router();
 
-// matches.getMatches();
-// rounds.getRounds();
+matches.getMatches();
+rounds.getRounds();
 
 /**
  *
