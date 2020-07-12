@@ -103,7 +103,7 @@ router.patch("/change_me/:userId", async (req, res, next) => {
 });
 
 //GET users profile using only token & check if a token is still valid
-router.get("me", authMiddleware, async (req, res) => {
+router.get("/me", authMiddleware, async (req, res) => {
   delete req.user.dataValues["password"];
   res.status(200).send({ ...req.user.dataValues });
 });
