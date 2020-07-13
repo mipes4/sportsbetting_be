@@ -142,6 +142,33 @@ module.exports = {
           scoreId: 1,
           matchId: 15,
         },
+        {
+          predGoalsHomeTeam: 1,
+          predGoalsAwayTeam: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          userId: 1,
+          scoreId: 1,
+          matchId: 16,
+        },
+        {
+          predGoalsHomeTeam: 0,
+          predGoalsAwayTeam: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          userId: 1,
+          scoreId: 1,
+          matchId: 17,
+        },
+        {
+          predGoalsHomeTeam: 1,
+          predGoalsAwayTeam: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          userId: 1,
+          scoreId: 1,
+          matchId: 18,
+        },
       ],
       {}
     );
